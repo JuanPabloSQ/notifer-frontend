@@ -9,6 +9,7 @@ import {
   IconButton,
   Checkbox,
   FormControlLabel,
+  Link,
 } from "@mui/material";
 import { useState } from "react";
 import { Visibility, VisibilityOff, Email, Lock } from "@mui/icons-material";
@@ -34,7 +35,7 @@ const LoginView = () => {
     <Container maxWidth="sm">
       <Paper elevation={3} sx={{ padding: 4, marginTop: 8, borderRadius: 2 }}>
         <Typography variant="h4" align="center" gutterBottom>
-          Login
+          PathlyAlerts
         </Typography>
         <Box component="form" onSubmit={handleSubmit} sx={{ mt: 2 }}>
           <TextField
@@ -78,19 +79,29 @@ const LoginView = () => {
               ),
             }}
           />
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              mt: 1,
+            }}
+          >
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={rememberMe}
+                  onChange={(e) => setRememberMe(e.target.checked)}
+                  color="primary"
+                />
+              }
+              label="Remember Me"
+            />
 
-          <FormControlLabel
-            control={
-              <Checkbox
-                checked={rememberMe}
-                onChange={(e) => setRememberMe(e.target.checked)}
-                color="primary"
-              />
-            }
-            label="Remember Me"
-            sx={{ mt: 1 }}
-          />
-
+            <Link href="#" underline="hover" color="primary" fontSize="0.9rem">
+              Forgot password?
+            </Link>
+          </Box>
           <Button
             type="submit"
             variant="contained"
@@ -110,6 +121,14 @@ const LoginView = () => {
           >
             Log In
           </Button>
+          <Box textAlign="center" mt={2}>
+            <Typography variant="body2">
+              Don’t have an account?{" "}
+              <Link href="#" underline="hover" color="primary">
+                Sign Up
+              </Link>
+            </Typography>
+          </Box>
         </Box>
       </Paper>
     </Container>
@@ -117,3 +136,4 @@ const LoginView = () => {
 };
 
 export default LoginView;
+
